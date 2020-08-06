@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeu en ligne</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        outline: none;
+      }
+      /* body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background: #f44336;
+        background-size: cover;
+      } */
+
+      body {
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-image: url("imagescasino/Mobile_NetEnt_Roulette-1.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      input {
+        padding: 1em;
+      }
+      /* button {
+        padding: 1em;
+        width: 200px;
+      } */
+      #gain {
+        background-color: beige;
+        display: inline;
+        padding: 1em;
+        margin: 4em;
+      }
+      select {
+        padding: 1em;
+      }
+
+      .mainbox {
+        position: relative;
+        width: 500px;
+        height: 500px;
+      }
+      .mainbox:after {
+        position: absolute;
+        content: "";
+        width: 50px;
+        height: 50px;
+        background: url("arrow.png") no-repeat;
+        background-size: 32px;
+        right: -70px;
+        top: 50%;
+        transform: translate(-50%);
+      }
+      .box {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        position: relative;
+        border: 10px solid #fff;
+        overflow: hidden;
+        transition: all ease 5s;
+      }
+      span {
+        width: 50%;
+        height: 50%;
+        display: inline-block;
+        position: absolute;
+      }
+      .span1 {
+        clip-path: polygon(0 92%, 100% 50%, 0 8%);
+        background-color: #ffeb3b;
+        top: 120px;
+        left: 0;
+      }
+      .span2 {
+        clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+        background-color: #e91e63;
+        top: 120px;
+        right: 0;
+      }
+      .span3 {
+        clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+        background-color: #4caf50;
+        bottom: 0;
+        left: 120px;
+      }
+      .span4 {
+        clip-path: polygon(50% 100%, 92% 0%, 8% 0%);
+        background-color: #3f51b5;
+        top: 0;
+        left: 120px;
+      }
+      .box2 {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-135deg);
+      }
+
+      span b {
+        width: 80px;
+        height: 80px;
+        line-height: 65px;
+        border-radius: 50%;
+        font-size: 26px;
+        text-align: center;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: inset 0 3px 3px 0 #717171;
+      }
+      .spin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        background-color: #ff5722;
+        color: #fff;
+        box-shadow: 0 5px 20px #000;
+        font-weight: bold;
+        font-size: 22px;
+        cursor: pointer;
+      }
+      .spin :active {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+      }
+      .mainbox.animate:after {
+        animation: animateArrow 1s ease infinite;
+      }
+      @keyframes animateArrow {
+        50% {
+          right: -40px;
+        }
+      }
+      h1{
+        color:rgb(39, 91, 139);
+        background-color: white;
+      }
+      label{
+        color:black;
+        background-color: white;
+      }
+      input{
+        width: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainbox" class="mainbox">
+      <div id="box" class="box">
+        <div class="box1">
+          <span class="span1"><b>Pair</b></span>
+          <span class="span2"><b>Impair</b></span>
+          <span class="span3"><b>10</b></span>
+          <span class="span4"><b>20</b></span>
+        </div>
+        <div class="box2">
+          <span class="span1"><b>30</b></span>
+          <span class="span2"><b>40</b></span>
+          <span class="span3"><b>50</b></span>
+          <span class="span4"><b>60</b></span>
+        </div>
+        <button class="spin" onclick="myfunction()">GO</button>
+      </div>
+    </div>
+
+    <h1>Bienvenue dans votre jeu</h1>
+    <form>
+      <select onChange="onSelectChange(event)">
+        <option>Selectionnez une option de tir</option>
+        <option value="Pair"> Pair</option>
+        <option value="Impair"> Impair</option>
+        <option value="1"> 1</option>
+        <option value="2"> 2</option>
+        <option value="3"> 3</option>
+        <option value="4"> 4</option>
+        <option value="5"> 5</option>
+        <option value="6"> 6</option>
+        <option value="7"> 7</option>
+        <option value="8"> 8</option>
+        <option value="9"> 9</option>
+        <option value="10"> 10</option>
+        <option value="11"> 11</option>
+        <option value="12"> 12</option>
+        <option value="13"> 13</option>
+        <option value="14"> 14</option>
+        <option value="15"> 15</option>
+        <option value="16"> 16</option>
+        <option value="17"> 17</option>
+        <option value="18"> 18</option>
+        <option value="19"> 19</option>
+        <option value="20"> 20</option>
+        <option value="21"> 21</option>
+        <option value="22"> 22</option>
+        <option value="23"> 23</option>
+        <option value="24"> 24</option>
+        <option value="25"> 25</option>
+        <option value="26"> 26</option>
+        <option value="27"> 27</option>
+        <option value="28"> 28</option>
+        <option value="29"> 29</option>
+        <option value="30"> 30</option>
+        <option value="31"> 31</option>
+        <option value="32"> 32</option>
+        <option value="33"> 33</option>
+        <option value="34"> 34</option>
+        <option value="35"> 35</option>
+        <option value="36"> 36</option> </select
+      ><br /><br />
+      <div>
+        <label for="number">  mise du joueur en milliers de francs:<br /><br /></label>
+        <input
+          type="number"
+          name="number"
+          required
+          placeholder="Saisissez une somme de mise"
+          oninput="onInputValue(event)"
+        />
+      </div>
+      <br /><br />
+
+      <!-- <div id="go">
+        <input value="Go" type="button" onclick="buttonGO(event)" />
+      </div> -->
+    </form>
+
+    <div id="gain"></div>
+
+    <script>
+      var choosedValue;
+      var mise = 0;
+      var gain = document.getElementById("gain");
+      function buttonGO(event) {
+        if (
+          (Number.isInteger(choosedValue) ||
+            typeof choosedValue === "string") &&
+          mise > 0
+        ) {
+          let numberElement = document.getElementsByName("number");
+          mise = numberElement[0].value;
+          // lancer la roulette
+          let sortie = roulet();
+          console.log("lancer la roulet." + sortie);
+          if (!isNaN(choosedValue) && sortie == choosedValue) {
+            gain.innerText = "Vous avez gagner: " + mise * 36 + " CFA";
+          } else if (!isNaN(choosedValue) && sortie != choosedValue) {
+            gain.innerText = "Vous avez perdu: " + mise + " CFA";
+          } else {
+            let ispair = isPair(sortie);
+            // on test si il a choisit pair et la rout est paire vis versa
+            if (
+              (choosedValue == "Pair" && ispair) ||
+              (choosedValue == "Impair" && !ispair && sortie > 0)
+            ) {
+              gain.innerText = "Vous avez gagner: " + mise * 2 + " CFA";
+            } else {
+              gain.innerText = "Vous avez perdu: " + mise + " CFA";
+            }
+          }
+        } else {
+          alert("Vous devez faire un choix et  faire une mise.");
+        }
+      }
+      function isPair(value) {
+        return value % 2 === 0;
+      }
+      function onSelectChange(event) {
+        choosedValue = event.target.value;
+      }
+      function onInputValue(event) {
+        console.log(event.target.value);
+        mise = event.target.value;
+      }
+      //   cette function genere des nombre compris entre 0 et 35.
+      function roulet() {
+        return Math.floor(Math.random() * 36);
+      }
+      function myfunction() {
+        var x = 1024;
+        var y = 9999;
+        var deg = Math.floor(Math.random() * (x - y)) + y;
+
+        document.getElementById("box").style.transform =
+          "rotate(" + deg + "deg)";
+
+        var element = document.getElementById("mainbox");
+        element.classList.remove("animate");
+        setTimeout(function () {
+          element.classList.add("animate");
+          buttonGO();
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body{
+    background-image: url("./imagescasino/casino.jpg");
+    background-size: 100%;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    margin: 0px;
+    margin-bottom: 0px;
+}
+h1{
+    text-align: center;
+    color:rgb(255, 255, 255);
+    font-weight: 1000;
+    font-style: italic;
+    height: 50px;
+    font-size: xx-large;
+
+}
+p{
+    margin-top:500px ;
+    color: white;
+    font-style:normal;
+    font-weight: bolder;
+}
+#jeuenligne{
+    font-weight: 1000;
+    font-size: xx-large;
+    font-style: italic;
+    margin-left:35%;
+    margin-top: 0px;  
+}
